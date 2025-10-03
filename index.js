@@ -17,7 +17,8 @@ const Usuarios = mongoose.model('Usuarios', new mongoose.Schema({
 
 const app = express();
 // mongoose.connect('mongodb://root:r0O7@localhost:27018/mibd?authSource=admin');
-mongoose.connect('mongodb://root:r0O7@mongohmgz:27017/mibd?authSource=admin');
+const mongoUri = process.env.MONGODB_URI || 'mongodb://root:r0O7@localhost:27018/mibd?authSource=admin';
+mongoose.connect(mongoUri);
 
 app.get('/', async(_req, res) => {
     console.log("listado de usuarios ...");
